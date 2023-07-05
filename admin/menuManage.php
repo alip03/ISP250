@@ -75,11 +75,11 @@
                                 $sql = "SELECT * FROM `pizza`";
                                 $result = mysqli_query($conn, $sql);
                                 while($row = mysqli_fetch_assoc($result)){
-                                    $pizzaId = $row['pizzaId'];
-                                    $pizzaName = $row['pizzaName'];
-                                    $pizzaPrice = $row['pizzaPrice'];
-                                    $pizzaDesc = $row['pizzaDesc'];
-                                    $pizzaCategorieId = $row['pizzaCategorieId'];
+                                    $pizzaId = $row['foodId'];
+                                    $pizzaName = $row['foodName'];
+                                    $pizzaPrice = $row['foodPrice'];
+                                    $pizzaDesc = $row['foodDesc'];
+                                    $pizzaCategorieId = $row['foodCategoryId'];
 
                                     echo '<tr>
                                             <td class="text-center">' .$pizzaCategorieId. '</td>
@@ -117,11 +117,11 @@
     $pizzasql = "SELECT * FROM `pizza`";
     $pizzaResult = mysqli_query($conn, $pizzasql);
     while($pizzaRow = mysqli_fetch_assoc($pizzaResult)){
-        $pizzaId = $pizzaRow['pizzaId'];
-        $pizzaName = $pizzaRow['pizzaName'];
-        $pizzaPrice = $pizzaRow['pizzaPrice'];
-        $pizzaCategorieId = $pizzaRow['pizzaCategorieId'];
-        $pizzaDesc = $pizzaRow['pizzaDesc'];
+        $pizzaId = $pizzaRow['foodId'];
+        $pizzaName = $pizzaRow['foodName'];
+        $pizzaPrice = $pizzaRow['foodPrice'];
+        $pizzaCategorieId = $pizzaRow['foodCategoryId'];
+        $pizzaDesc = $pizzaRow['foodDesc'];
 ?>
 
 <!-- Modal -->
