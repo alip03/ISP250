@@ -56,24 +56,24 @@
                                 $counter = 0;
                                 $totalPrice = 0;
                                 while($row = mysqli_fetch_assoc($result)){
-                                    $pizzaId = $row['pizzaId'];
+                                    $pizzaId = $row['foodId'];
                                     $Quantity = $row['itemQuantity'];
-                                    $mysql = "SELECT * FROM `pizza` WHERE pizzaId = $pizzaId";
+                                    $mysql = "SELECT * FROM `pizza` WHERE foodId = $foodId";
                                     $myresult = mysqli_query($conn, $mysql);
                                     $myrow = mysqli_fetch_assoc($myresult);
-                                    $pizzaName = $myrow['pizzaName'];
-                                    $pizzaPrice = $myrow['pizzaPrice'];
-                                    $total = $pizzaPrice * $Quantity;
+                                    $foodName = $myrow['foodName'];
+                                    $foodPrice = $myrow['foodPrice'];
+                                    $total = $foodPrice * $Quantity;
                                     $counter++;
                                     $totalPrice = $totalPrice + $total;
 
                                     echo '<tr>
                                             <td>' . $counter . '</td>
-                                            <td>' . $pizzaName . '</td>
-                                            <td>' . $pizzaPrice . '</td>
+                                            <td>' . $foodName . '</td>
+                                            <td>' . $foodPrice . '</td>
                                             <td>
-                                                <form id="frm' . $pizzaId . '">
-                                                    <input type="hidden" name="pizzaId" value="' . $pizzaId . '">
+                                                <form id="frm' . $foodId . '">
+                                                    <input type="hidden" name="foodId" value="' . $foodId . '">
                                                     <input type="number" name="quantity" value="' . $Quantity . '" class="text-center" onchange="updateCart(' . $pizzaId . ')" onkeyup="return false" style="width:60px" min=1 oninput="check(this)" onClick="this.select();">
                                                 </form>
                                             </td>
@@ -81,7 +81,7 @@
                                             <td>
                                                 <form action="partials/_manageCart.php" method="POST">
                                                     <button name="removeItem" class="btn btn-sm btn-outline-danger">Remove</button>
-                                                    <input type="hidden" name="itemId" value="'.$pizzaId. '">
+                                                    <input type="hidden" name="itemId" value="'.$foodId. '">
                                                 </form>
                                             </td>
                                         </tr>';
