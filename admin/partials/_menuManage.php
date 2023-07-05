@@ -9,14 +9,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $categoryId = $_POST["categoryId"];
         $price = $_POST["price"];
 
-        $sql = "INSERT INTO `pizza` (`pizzaName`, `pizzaPrice`, `pizzaDesc`, `pizzaCategorieId`, `pizzaPubDate`) VALUES ('$name', '$price', '$description', '$categoryId', current_timestamp())";   
+        $sql = "INSERT INTO `pizza` (`foodName`, `foodPrice`, `foodDesc`, `foodCategoryId`, `foodPubDate`) VALUES ('$name', '$price', '$description', '$categoryId', current_timestamp())";   
         $result = mysqli_query($conn, $sql);
-        $pizzaId = $conn->insert_id;
+        $foodId = $conn->insert_id;
         if ($result){
             $check = getimagesize($_FILES["image"]["tmp_name"]);
             if($check !== false) {
                 
-                $newName = 'pizza-'.$pizzaId;
+                $newName = 'food-'.$foodId;
                 $newfilename=$newName .".jpg";
 
                 $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/OnlinePizzaDelivery/img/';
@@ -46,10 +46,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     if(isset($_POST['removeItem'])) {
-        $pizzaId = $_POST["pizzaId"];
-        $sql = "DELETE FROM `pizza` WHERE `pizzaId`='$pizzaId'";   
+        $foodId = $_POST["foodId"];
+        $sql = "DELETE FROM `pizza` WHERE `foodId`='$foodId'";   
         $result = mysqli_query($conn, $sql);
-        $filename = $_SERVER['DOCUMENT_ROOT']."/OnlinePizzaDelivery/img/pizza-".$pizzaId.".jpg";
+        $filename = $_SERVER['DOCUMENT_ROOT']."/OnlinePizzaDelivery/img/food-".$foodId.".jpg";
         if ($result){
             if (file_exists($filename)) {
                 unlink($filename);
@@ -65,13 +65,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     if(isset($_POST['updateItem'])) {
-        $pizzaId = $_POST["pizzaId"];
-        $pizzaName = $_POST["name"];
-        $pizzaDesc = $_POST["desc"];
-        $pizzaPrice = $_POST["price"];
-        $pizzaCategorieId = $_POST["catId"];
+        $foodId = $_POST["foodId"];
+        $foodName = $_POST["name"];
+        $foodDesc = $_POST["desc"];
+        $foodPrice = $_POST["price"];
+        $foodCategoryId = $_POST["catId"];
 
-        $sql = "UPDATE `pizza` SET `pizzaName`='$pizzaName', `pizzaPrice`='$pizzaPrice', `pizzaDesc`='$pizzaDesc', `pizzaCategorieId`='$pizzaCategorieId' WHERE `pizzaId`='$pizzaId'";   
+        $sql = "UPDATE `pizza` SET `foodName`='$foodName', `foodPrice`='$foodPrice', `foodDesc`='$foodDesc', `foodCategoryId`='$foodCategoryId' WHERE `foodId`='$foodId'";   
         $result = mysqli_query($conn, $sql);
         if ($result){
             echo "<script>alert('update');
@@ -85,10 +85,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     if(isset($_POST['updateItemPhoto'])) {
-        $pizzaId = $_POST["pizzaId"];
+        $foodId = $_POST["foodId"];
         $check = getimagesize($_FILES["itemimage"]["tmp_name"]);
         if($check !== false) {
-            $newName = 'pizza-'.$pizzaId;
+            $newName = 'food-'.$foodId;
             $newfilename=$newName .".jpg";
 
             $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/OnlinePizzaDelivery/img/';
