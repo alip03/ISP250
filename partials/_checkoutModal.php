@@ -12,11 +12,11 @@
             <form action="partials/_manageCart.php" method="post">
                 <div class="form-group">
                     <b><label for="address">Address:</label></b>
-                    <input class="form-control" id="address" name="address" placeholder="Enter your address" type="text" required minlength="3" maxlength="500">
+                    <input class="form-control" id="address" name="address" placeholder="UiTM Sarawak Kampus Samarahan 2" type="text" required minlength="3" maxlength="500">
                 </div>
                 <div class="form-group">
                     <b><label for="address1">Address Line 2:</label></b>
-                    <input class="form-control" id="address1" name="address1" placeholder="Enter your address 2" type="text">
+                    <input class="form-control" id="address1" name="address1" placeholder="Near IKE Village, Kota Samarahan" type="text">
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6 mb-0">
